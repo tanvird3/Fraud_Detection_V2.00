@@ -58,7 +58,7 @@ app.layout = html.Div(
                 # sender's original balance
                 html.Div(
                     [
-                        html.H3("Amount Transected:", style={"paddingRight": "30px"}),
+                        html.H3("Amount Transacted:", style={"paddingRight": "30px"}),
                         dcc.Input(
                             id="amount",
                             type="number",
