@@ -32,7 +32,7 @@ app.layout = html.Div(
                 html.Div(
                     [
                         html.H3(
-                            "OTP Sent (times):",
+                            "OTP Requested (times):",
                             style={"paddingRight": "30px"},
                         ),  # this style controls the title
                         dcc.Input(
