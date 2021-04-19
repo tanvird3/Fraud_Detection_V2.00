@@ -294,7 +294,7 @@ def Fraud_Verdict(
         marker={"color": "#008080"},
     )
     coef_layout = go.Layout(
-        title="Coefficient Values",
+        title="Feature Importance",
         xaxis=dict(title=""),
         yaxis=dict(title=""),
     )
