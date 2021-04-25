@@ -55,10 +55,10 @@ app.layout = html.Div(
                         "justify-content": "center",  # this style controls the overall menu
                     },
                 ),
-                # sender's original balance
+                # Amount in Transaction 
                 html.Div(
                     [
-                        html.H3("Amount Transacted:", style={"paddingRight": "30px"}),
+                        html.H3("Amount in Transaction:", style={"paddingRight": "30px"}),
                         dcc.Input(
                             id="amount",
                             type="number",
@@ -283,20 +283,29 @@ def Fraud_Verdict(
     # Model Coef Figure
     ft_importance = pd.DataFrame(
         loaded_model.best_estimator_.feature_importances_,
-        index=test_case.columns,
+        index=[
+            "OTP Requested",
+            "Amount in Transaction",
+            "Is the Site Flagged",
+            "Is the Device Unrecognized",
+            "Is the Location Unusual",
+        ],
         columns=["Coef"],
     )
 
-    coef_data = go.Bar(
-        y=ft_importance.index,
-        x=ft_importance["Coef"],
-        orientation="h",
-        marker={"color": "#008080"},
+    coef_data = go.Pie(
+        labels=ft_importance.index,
+        values=ft_importance["Coef"],
+        hole=0.3,
+	name="",
+        hovertemplate="%{label}: %{percent}",
     )
     coef_layout = go.Layout(
-        title="Feature Importance",
+        title="Coefficient Values",
         xaxis=dict(title=""),
         yaxis=dict(title=""),
+        width=1350,
+        height=600,
     )
     coef_fig = go.Figure(data=[coef_data], layout=coef_layout)
     coef_fig.update_layout(
