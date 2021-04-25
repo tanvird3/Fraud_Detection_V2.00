@@ -301,7 +301,7 @@ def Fraud_Verdict(
         hovertemplate="%{label}: %{percent}",
     )
     coef_layout = go.Layout(
-        title="Coefficient Values",
+        title="Coefficient Importance",
         xaxis=dict(title=""),
         yaxis=dict(title=""),
         width=1350,
