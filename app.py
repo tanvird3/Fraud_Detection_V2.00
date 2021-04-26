@@ -43,6 +43,7 @@ app.layout = html.Div(
                             style={
                                 "fontsize": 15,
                                 "width": 55,
+                                "height": 25,
                                 "color": colors[
                                     "text"
                                 ],  # this style controls the input box
@@ -55,10 +56,12 @@ app.layout = html.Div(
                         "justify-content": "center",  # this style controls the overall menu
                     },
                 ),
-                # Amount in Transaction 
+                # Amount in Transaction
                 html.Div(
                     [
-                        html.H3("Amount in Transaction:", style={"paddingRight": "30px"}),
+                        html.H3(
+                            "Amount in Transaction:", style={"paddingRight": "30px"}
+                        ),
                         dcc.Input(
                             id="amount",
                             type="number",
@@ -67,6 +70,7 @@ app.layout = html.Div(
                             style={
                                 "fontsize": 15,
                                 "width": 55,
+                                "height": 25,
                                 "color": colors["text"],
                             },
                         ),
@@ -77,19 +81,6 @@ app.layout = html.Div(
                         "justify-content": "center",
                     },
                 ),
-            ],
-            style={
-                "display": "flex",
-                "align-items": "center",
-                "justify-content": "center",
-                "color": colors[
-                    "text"
-                ],  # this style controls the entire first line of input
-            },
-        ),
-        # the second line of menus
-        html.Div(
-            [
                 # Flagged Site
                 html.Div(
                     [
@@ -108,6 +99,7 @@ app.layout = html.Div(
                             style={
                                 "fontsize": 15,
                                 "width": 55,
+                                "height": 30,
                                 "color": colors["text"],
                             },
                         ),
@@ -136,6 +128,7 @@ app.layout = html.Div(
                             style={
                                 "fontsize": 15,
                                 "width": 55,
+                                "height": 30,
                                 "color": colors["text"],
                             },
                         ),
@@ -164,6 +157,7 @@ app.layout = html.Div(
                             style={
                                 "fontsize": 15,
                                 "width": 55,
+                                "height": 30,
                                 "color": colors["text"],
                             },
                         ),
@@ -191,6 +185,18 @@ app.layout = html.Div(
                     },
                 ),
             ],
+            style={
+                "display": "flex",
+                "align-items": "center",
+                "justify-content": "center",
+                "color": colors[
+                    "text"
+                ],  # this style controls the entire first line of input
+            },
+        ),
+        # the second line of menus
+        html.Div(
+            [],
             style={
                 "display": "flex",
                 "align-items": "center",
