@@ -269,13 +269,14 @@ def Fraud_Verdict(
     verdict = np.where(
         test_case_verdict == 0, "Regular Transaction", "Suspicious Transaction"
     )[0]
+    verdict_col = np.where(test_case_verdict == 0, "#00ff00", "#ff0000")[0]
     testcase_prob = loaded_model.predict_proba(test_case).tolist()[0]
 
     verdict_plot = go.Bar(
         x=["Regular Case", "Fraud Case"], y=testcase_prob, marker={"color": "#008080"}
     )
     verdict_layout = go.Layout(
-        title="Verdict: " + verdict,
+        title=dict(text="Verdict: " + verdict, font=dict(color=verdict_col)),
         xaxis=dict(title="Case Category"),
         yaxis=dict(title="Probability"),
     )
