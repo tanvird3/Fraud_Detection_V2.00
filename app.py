@@ -215,7 +215,7 @@ app.layout = html.Div(
         "display": "inline-block",
         "backgroundColor": colors["background"],
         "horizontalAlign": "middle",
-        "width": 1350,
+        "width": "100%",
         "height": "100%",
         "align-items": "center",
         "justify-content": "center",  # this style controls the entire app
@@ -311,7 +311,7 @@ def Fraud_Verdict(
         title="Coefficient Importance",
         xaxis=dict(title=""),
         yaxis=dict(title=""),
-        width=1350,
+        #width=1350,
         height=600,
     )
     coef_fig = go.Figure(data=[coef_data], layout=coef_layout)
@@ -324,6 +324,7 @@ def Fraud_Verdict(
     # model evaluation table
     evaluation = pd.read_csv("report.csv")
     evaluation = evaluation.rename(columns={"Unnamed: 0": "Category"})
+    evaluation["Category"][0:2] = ["0", "1"]
     evaluation.iloc[:, 1:] = evaluation.iloc[:, 1:].round(5)
 
     eval_table = go.Table(
