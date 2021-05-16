@@ -200,9 +200,7 @@ app.layout = html.Div(
         dcc.Graph(id="Model_Evaluation"),
     ],
     style={
-        # "display": "inline-block",
         "backgroundColor": colors["background"],
-        # "horizontalAlign": "middle",
         "width": "100%",
         "height": "100%",  # this style controls the entire app
     },
