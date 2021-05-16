@@ -7,7 +7,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output, State
 import plotly.graph_objs as go
 import pickle
-import xgboost
+#import xgboost
 
 # initiate the app
 app = dash.Dash()
@@ -18,12 +18,17 @@ server = app.server
 
 # format the app
 
-colors = {"background": "#111111", "text": "#009E73"}
+colors = {"background": "#111111", "text": "#009E73", "box": "#7F7F7F"}
 
 app.layout = html.Div(
     children=[
         html.H1(
-            "Fraud Detection", style={"textAlign": "center", "color": colors["text"]}
+            "Fraud Detection",
+            style={
+                "textAlign": "center",
+                "color": colors["text"],
+                "paddingTop": "10px",
+            },
         ),
         # the first line of menus
         html.Div(
@@ -51,9 +56,6 @@ app.layout = html.Div(
                         ),
                     ],
                     style={
-                        "display": "inline-block",
-                        "align-items": "center",
-                        "justify-content": "center",  # this style controls the overall menu
                     },
                 ),
                 # Amount in Transaction
@@ -76,9 +78,6 @@ app.layout = html.Div(
                         ),
                     ],
                     style={
-                        "display": "inline-block",
-                        "align-items": "center",
-                        "justify-content": "center",
                     },
                 ),
                 # Flagged Site
@@ -105,9 +104,6 @@ app.layout = html.Div(
                         ),
                     ],
                     style={
-                        "display": "inline-block",
-                        "align-items": "center",
-                        "justify-content": "center",
                     },
                 ),
                 # unrecognized Device
@@ -134,9 +130,6 @@ app.layout = html.Div(
                         ),
                     ],
                     style={
-                        "display": "inline-block",
-                        "align-items": "center",
-                        "justify-content": "center",
                     },
                 ),
                 # unrecognized location
@@ -163,9 +156,6 @@ app.layout = html.Div(
                         ),
                     ],
                     style={
-                        "display": "inline-block",
-                        "align-items": "center",
-                        "justify-content": "center",
                     },
                 ),
                 # the submit button
@@ -179,18 +169,16 @@ app.layout = html.Div(
                         )
                     ],
                     style={
-                        "display": "inline-block",
-                        "align-items": "center",
-                        "justify-content": "center",
                     },
                 ),
             ],
             style={
                 "display": "flex",
-                "align-items": "center",
-                "justify-content": "center",
-                "color": colors[
-                    "text"
+                "align-items": "center", # vertical alignment
+                "justify-content": "center", # horizontal alignment
+                "color": colors["text"],
+                "background-color": colors[
+                    "background"
                 ],  # this style controls the entire first line of input
             },
         ),
@@ -212,13 +200,11 @@ app.layout = html.Div(
         dcc.Graph(id="Model_Evaluation"),
     ],
     style={
-        "display": "inline-block",
+        # "display": "inline-block",
         "backgroundColor": colors["background"],
-        "horizontalAlign": "middle",
+        # "horizontalAlign": "middle",
         "width": "100%",
-        "height": "100%",
-        "align-items": "center",
-        "justify-content": "center",  # this style controls the entire app
+        "height": "100%",  # this style controls the entire app
     },
 )
 
