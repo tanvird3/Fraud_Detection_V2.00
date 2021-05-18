@@ -10,7 +10,7 @@ import pickle
 #import xgboost
 
 # initiate the app
-app = dash.Dash()
+app = dash.Dash(__name__)
 server = app.server
 
 # read more about inline-block & flex
@@ -55,8 +55,7 @@ app.layout = html.Div(
                             },
                         ),
                     ],
-                    style={
-                    },
+                    style={"display": "inline-block"},
                 ),
                 # Amount in Transaction
                 html.Div(
@@ -77,8 +76,7 @@ app.layout = html.Div(
                             },
                         ),
                     ],
-                    style={
-                    },
+                    style={"display": "inline-block"},
                 ),
                 # Flagged Site
                 html.Div(
@@ -103,8 +101,7 @@ app.layout = html.Div(
                             },
                         ),
                     ],
-                    style={
-                    },
+                    style={"display": "inline-block"},
                 ),
                 # unrecognized Device
                 html.Div(
@@ -129,8 +126,7 @@ app.layout = html.Div(
                             },
                         ),
                     ],
-                    style={
-                    },
+                    style={"display": "inline-block"},
                 ),
                 # unrecognized location
                 html.Div(
@@ -155,8 +151,7 @@ app.layout = html.Div(
                             },
                         ),
                     ],
-                    style={
-                    },
+                    style={"display": "inline-block"},
                 ),
                 # the submit button
                 html.Div(
@@ -165,17 +160,16 @@ app.layout = html.Div(
                             id="submit-button",
                             children="Find",
                             n_clicks=0,
-                            style={"fontSize": 25, "color": colors["text"]},
+                            style={"fontSize": 20, "color": colors["text"]},
                         )
                     ],
-                    style={
-                    },
+                    style={"display": "inline-block"},
                 ),
             ],
             style={
                 "display": "flex",
-                "align-items": "center", # vertical alignment
-                "justify-content": "center", # horizontal alignment
+                "align-items": "center",  # vertical alignment
+                "justify-content": "center",  # horizontal alignment
                 "color": colors["text"],
                 "background-color": colors[
                     "background"
@@ -201,8 +195,8 @@ app.layout = html.Div(
     ],
     style={
         "backgroundColor": colors["background"],
+        "height": "100%",
         "width": "100%",
-        "height": "100%",  # this style controls the entire app
     },
 )
 
