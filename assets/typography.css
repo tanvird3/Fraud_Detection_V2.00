@@ -13,3 +13,9 @@ h2 {
 h3 {
         margin-top: 0;
     }
+
+body {
+    font-family: "Helvetica", sans-sherif;
+    background-color: #3b3a30; 
+}
+

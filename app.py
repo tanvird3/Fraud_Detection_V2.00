@@ -10,7 +10,9 @@ import pickle
 import xgboost
 
 # initiate the app
-app = dash.Dash()
+#app = dash.Dash()
+external_stylesheets=["./assets/typography.css"]
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 # app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
 server = app.server
 
