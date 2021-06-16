@@ -198,8 +198,6 @@ app.layout = html.Div(
     ],
     style={
         "backgroundColor": colors["background"],
-        "height": "100%",
-        "width": "100%",
     },
 )
 
