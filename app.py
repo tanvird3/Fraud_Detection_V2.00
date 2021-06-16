@@ -10,10 +10,7 @@ import pickle
 #import xgboost
 
 # initiate the app
-app = dash.Dash(
-    __name__,
-    meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
-)
+app = dash.Dash()
 server = app.server
 
 # read more about inline-block & flex
@@ -198,9 +195,10 @@ app.layout = html.Div(
     ],
     style={
         "backgroundColor": colors["background"],
+        "height": "100%",
+        "width": "100%",
     },
 )
-
 # app functions
 @app.callback(
     [
