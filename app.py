@@ -47,7 +47,7 @@ app.layout = html.Div(
                             value=1,
                             style={
                                 "fontsize": 15,
-                                "width": 55,
+                                "width": 60,
                                 "height": 25,
                                 "color": colors[
                                     "text"
@@ -70,7 +70,7 @@ app.layout = html.Div(
                             value=10000,
                             style={
                                 "fontsize": 15,
-                                "width": 55,
+                                "width": 60,
                                 "height": 25,
                                 "color": colors["text"],
                             },
@@ -92,7 +92,7 @@ app.layout = html.Div(
                             clearable=False,
                             style={
                                 "fontsize": 15,
-                                "width": 55,
+                                "width": 60,
                                 "height": 30,
                                 "color": colors["text"],
                             },
@@ -116,7 +116,7 @@ app.layout = html.Div(
                             clearable=False,
                             style={
                                 "fontsize": 15,
-                                "width": 55,
+                                "width": 60,
                                 "height": 30,
                                 "color": colors["text"],
                             },
@@ -140,7 +140,7 @@ app.layout = html.Div(
                             clearable=False,
                             style={
                                 "fontsize": 15,
-                                "width": 55,
+                                "width": 60,
                                 "height": 30,
                                 "color": colors["text"],
                             },
