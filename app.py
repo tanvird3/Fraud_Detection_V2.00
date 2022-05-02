@@ -7,10 +7,11 @@ import dash_html_components as html
 from dash.dependencies import Input, Output, State
 import plotly.graph_objs as go
 import pickle
-#import xgboost
+import xgboost
 
 # initiate the app
-app = dash.Dash(__name__)
+external_stylesheets=["./assets/typography.css"]
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 # read more about inline-block & flex
@@ -37,8 +38,7 @@ app.layout = html.Div(
                 html.Div(
                     [
                         html.H3(
-                            "OTP Requested (times):",
-                            style={"paddingRight": "30px"},
+                            "OTP Requested (times):", style={"paddingRight": "30px"},
                         ),  # this style controls the title
                         dcc.Input(
                             id="OTP_Req",
@@ -47,7 +47,7 @@ app.layout = html.Div(
                             value=1,
                             style={
                                 "fontsize": 15,
-                                "width": 55,
+                                "width": 60,
                                 "height": 25,
                                 "color": colors[
                                     "text"
@@ -70,7 +70,7 @@ app.layout = html.Div(
                             value=10000,
                             style={
                                 "fontsize": 15,
-                                "width": 55,
+                                "width": 60,
                                 "height": 25,
                                 "color": colors["text"],
                             },
@@ -81,10 +81,7 @@ app.layout = html.Div(
                 # Flagged Site
                 html.Div(
                     [
-                        html.H3(
-                            "Flagged Site:",
-                            style={"paddingRight": "30px"},
-                        ),
+                        html.H3("Flagged Site:", style={"paddingRight": "30px"},),
                         dcc.Dropdown(
                             id="isFlaggedSite",
                             options=[
@@ -95,7 +92,7 @@ app.layout = html.Div(
                             clearable=False,
                             style={
                                 "fontsize": 15,
-                                "width": 55,
+                                "width": 60,
                                 "height": 30,
                                 "color": colors["text"],
                             },
@@ -107,8 +104,7 @@ app.layout = html.Div(
                 html.Div(
                     [
                         html.H3(
-                            "Unrecongnized Device: ",
-                            style={"paddingRight": "30px"},
+                            "Unrecongnized Device: ", style={"paddingRight": "30px"},
                         ),
                         dcc.Dropdown(
                             id="isUnrecognizedDevice",
@@ -120,7 +116,7 @@ app.layout = html.Div(
                             clearable=False,
                             style={
                                 "fontsize": 15,
-                                "width": 55,
+                                "width": 60,
                                 "height": 30,
                                 "color": colors["text"],
                             },
@@ -132,8 +128,7 @@ app.layout = html.Div(
                 html.Div(
                     [
                         html.H3(
-                            "Unrecongnized Location: ",
-                            style={"paddingRight": "30px"},
+                            "Unrecongnized Location: ", style={"paddingRight": "30px"},
                         ),
                         dcc.Dropdown(
                             id="isOutsideLocation",
@@ -145,7 +140,7 @@ app.layout = html.Div(
                             clearable=False,
                             style={
                                 "fontsize": 15,
-                                "width": 55,
+                                "width": 60,
                                 "height": 30,
                                 "color": colors["text"],
                             },
@@ -193,11 +188,7 @@ app.layout = html.Div(
         dcc.Graph(id="Coef_Value"),
         dcc.Graph(id="Model_Evaluation"),
     ],
-    style={
-        "backgroundColor": colors["background"],
-        "height": "100%",
-        "width": "100%",
-    },
+    style={"backgroundColor": colors["background"], "height": "100%", "width": "100%",},
 )
 
 # app functions
@@ -219,12 +210,7 @@ app.layout = html.Div(
 
 # start the function
 def Fraud_Verdict(
-    n_clicks,
-    OTP_Req,
-    amount,
-    isFlaggedSite,
-    isUnrecognizedDevice,
-    isOutsideLocation,
+    n_clicks, OTP_Req, amount, isFlaggedSite, isUnrecognizedDevice, isOutsideLocation,
 ):
     # test case plot
     test_case = [
@@ -282,21 +268,21 @@ def Fraud_Verdict(
         labels=ft_importance.index,
         values=ft_importance["Coef"],
         hole=0.3,
-	name="",
+        name="",
         hovertemplate="%{label}: %{percent}",
     )
     coef_layout = go.Layout(
         title="Coefficient Importance",
         xaxis=dict(title=""),
         yaxis=dict(title=""),
-        #width=1350,
+        # width="100%",
         height=600,
     )
     coef_fig = go.Figure(data=[coef_data], layout=coef_layout)
     coef_fig.update_layout(
-        plot_bgcolor=colors["background"],
+        plot_bgcolor=colors["background"],  # color of the plot background
         font=dict(color=colors["text"]),
-        paper_bgcolor=colors["background"],
+        paper_bgcolor=colors["background"],  # color of the outside frame of the plot
     )
 
     # model evaluation table
@@ -323,9 +309,7 @@ def Fraud_Verdict(
     )
 
     eval_layout = go.Layout(
-        title="Model Evaluaiton",
-        xaxis=dict(title=""),
-        yaxis=dict(title=""),
+        title="Model Evaluaiton", xaxis=dict(title=""), yaxis=dict(title=""),
     )
 
     eval_fig = go.Figure(data=[eval_table], layout=eval_layout)
@@ -341,3 +325,4 @@ def Fraud_Verdict(
 # launch the app
 if __name__ == "__main__":
     app.run_server(debug=False, threaded=False)
+
